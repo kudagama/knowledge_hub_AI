@@ -1,15 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 
-const mockData = {
-  react: "React is a JavaScript library for building user interfaces. It is maintained by Meta and a community of developers. React can be used as a base in the development of single-page or mobile applications.",
-  tailwind: "Tailwind CSS is a utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
-  ai: "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.",
-  vite: "Vite is a modern frontend build tool that provides an extremely fast development environment and bundles your code for production. It uses native ES modules to serve code instantly, regardless of the app size.",
-  javascript: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript standard. It has dynamic typing, prototype-based object-orientation, and first-class functions.",
-  sltmobitel: "SLTMOBITEL is the national telecommunications services provider in Sri Lanka and one of the country's largest companies. It provides fixed voice, broadband, mobile, and enterprise solutions.",
-  megaline: "SLT Megaline provides unlimited home broadband, fixed voice, and PeoTV services through wired ADSL and VDSL connections.",
-  "slt fibre": "SLT Fibre is the premier fiber-to-the-home (FTTH) service in Sri Lanka, offering ultra-fast internet connectivity for seamless streaming, gaming, and downloads."
-};
+const mockData = [
+  {
+    keywords: ["what is the main mediums on slt mobitel to deliver services", "slt mediums english"],
+    answer: "Fiber to the Home/Premises (FTTx): This is the flagship technology, providing high-speed fiber connectivity to residential and enterprise customers, offering speeds up to 1 Gbps.\n\n4G/LTE (Fixed & Mobile): SLT-Mobitel utilizes fixed 4G/LTE for residential broadband and widespread mobile 4G-LTE technology for mobile telephony and broadband, including high-speed HSPA+ and MIMO technologies.\n\nCopper (ADSL2+ / VDSL2): The company continues to use its extensive existing copper telephone network to deliver broadband services, primarily through ADSL technology."
+  },
+  {
+    keywords: ["slt connection jathi monawada", "slt mediums sinhala", "slt eken dena services monawada", "slt connections"],
+    answer: "Fiber to the Home/Premises (FTTx): මේක තමයි ප්රධානම technology එක. ගෙවල් වලට සහ ආයතන වලට 1 Gbps දක්වා speed එකක් තියෙන high-speed fiber connection මේකෙන් දෙනවා.\n\n4G/LTE (Fixed & Mobile): SLT-Mobitel ගෙවල් වලට fixed 4G/LTE broadband දෙනවා වගේම, mobile calls සහ broadband වලට mobile 4G-LTE technology එක පාවිච්චි කරනවා. මේකට high-speed HSPA+ සහ MIMO technologies ඇතුලත්.\n\nCopper (ADSL2+ / VDSL2): සමාගම දැනට තියෙන ලොකු තඹ දුරකථන ජාලය (copper telephone network) පාවිච්චි කරලා, ගොඩක් වෙලාවට ADSL technology එක හරහා broadband services දිගටම දෙනවා."
+  },
+  {
+    keywords: ["react", "react js", "reactjs"],
+    answer: "React is a JavaScript library for building user interfaces. It is maintained by Meta and a community of developers. React can be used as a base in the development of single-page or mobile applications."
+  },
+  {
+    keywords: ["tailwind", "tailwindcss"],
+    answer: "Tailwind CSS is a utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup."
+  }
+];
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,9 +50,16 @@ function App() {
     setIsTyping(true);
     setHasSearched(true);
     
-    const resultText = mockData[query];
+    // Find matching entry based on keywords
+    const foundEntry = mockData.find(entry => 
+      entry.keywords.some(kw => kw.toLowerCase().includes(query) || query.includes(kw.toLowerCase()))
+    );
+    
+    const resultText = foundEntry ? foundEntry.answer : null;
     
     if (resultText) {
+      // Split by spaces, which preserves \n connected to words 
+      // e.g. "Gbps.\n\n4G/LTE" acts as one block preserving the newline
       const words = resultText.split(' ');
       let currentWordIndex = 0;
       
@@ -80,10 +95,10 @@ function App() {
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-slt-blue mb-2">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slt-blue mb-2 text-center">
             Knowledge Hub AI
           </h1>
-          <p className="text-slate-500 text-sm font-medium">Ask anything from your internal knowledge base.</p>
+          <p className="text-slate-500 text-sm font-medium text-center">Ask anything from your internal knowledge base.</p>
         </header>
 
         {/* Main Content Area */}
@@ -103,7 +118,7 @@ function App() {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search knowledge... (e.g. sltmobitel, megaline, fibre)"
+                placeholder="Search knowledge... (e.g. slt mediums, react)"
                 className="flex-1 bg-transparent border-none text-slate-800 px-4 py-5 outline-none placeholder:text-slate-400 text-lg w-full"
                 autoComplete="off"
               />
@@ -147,11 +162,11 @@ function App() {
                     </svg>
                   </div>
                   <p className="text-lg font-medium text-slate-500">Your knowledge results will appear here</p>
-                  <p className="text-sm mt-2 opacity-80 text-center max-w-sm">Try searching for keywords like "SLTMOBITEL", "Megaline", or "SLT Fibre".</p>
+                  <p className="text-sm mt-2 opacity-80 text-center max-w-sm">Try searching for queries like "slt mediums" or "react".</p>
                 </div>
               ) : (
-                <div className="prose prose-slate max-w-none">
-                  <p className="text-lg leading-relaxed text-slate-700 font-medium" style={{ whiteSpace: 'pre-wrap' }}>
+                <div className="max-w-none">
+                  <p className="text-lg leading-relaxed text-slate-700 font-medium whitespace-pre-wrap">
                     {displayedText}
                     {isTyping && (
                       <span className="inline-block w-2.5 h-5 ml-1.5 align-middle bg-slt-green animate-pulse rounded-sm"></span>
