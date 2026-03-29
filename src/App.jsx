@@ -3,7 +3,7 @@ import Fuse from 'fuse.js';
 
 const knowledgeBase = [
   {
-    keywords: ["slt mediums", "connections", "technology", "fiber", "4g", "adsl", "internet types"],
+    keywords: ["main mediums", "connections", "technology", "fiber", "4g", "adsl", "internet types"],
     answer: "ප්රධාන SLT සේවාවන් මෙන්න:\n\n🚀 Fiber (FTTx): 1 Gbps දක්වා speed. වේගවත්ම connection එක.\n\n📱 4G/LTE: Wireless broadband සහ calls. හොඳ coverage එකක් තියෙනවා.\n\n☎️ Copper (ADSL): Telephone line එකෙන් දෙන basic internet සේවාව."
   },
   {
