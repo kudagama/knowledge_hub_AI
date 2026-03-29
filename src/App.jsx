@@ -3,6 +3,10 @@ import Fuse from 'fuse.js';
 
 const knowledgeBase = [
   {
+    keywords: ["slt mediums", "connections", "technology", "fiber", "4g", "adsl", "internet types"],
+    answer: "ප්රධාන SLT සේවාවන් මෙන්න:\n\n🚀 Fiber (FTTx): 1 Gbps දක්වා speed. වේගවත්ම connection එක.\n\n📱 4G/LTE: Wireless broadband සහ calls. හොඳ coverage එකක් තියෙනවා.\n\n☎️ Copper (ADSL): Telephone line එකෙන් දෙන basic internet සේවාව."
+  },
+  {
     keywords: ["megaline wisthara", "copper packages", "megaline details", "megaline single play", "megaline double play", "megaline triple play"],
     answer: "☎️ Megaline (Copper) Packages:\n\n🔹 Single Play: Voice only.\n🔹 Double Play: Two services only (Voice + BB හෝ Voice + PeoTV. BB හෝ PeoTV පමණක් වෙනම දෙන්නේ නෑ).\n🔹 Triple Play: Services 3ම දෙනවා (Voice + BB + PeoTV)."
   },
@@ -13,6 +17,26 @@ const knowledgeBase = [
   {
     keywords: ["4g wisthara", "4g packages", "lte details", "4g single play", "4g double play", "4g triple play"],
     answer: "📱 4G Packages:\n\n🔹 Single Play: Voice සහ Broadband දෙකම තියෙනවා. වෙන වෙනම ගන්නත් පුළුවන්.\n🔹 Double Play: '4G Double Play' කියලා වෙනම ජාතියක් නෑ. Voice & BB විතරයි තියෙන්නේ. PeoTV දෙන්නේ නෑ.\n🔹 Triple Play: 4G වලට Triple play එකක් නෑ. (PeoTV දෙන්නේ නැති නිසා)."
+  },
+  {
+    keywords: ["new connection", "aluth connection", "documents needed", "new line", "connection ganna", "requirements"],
+    answer: "🆕 New Connection එකක් ගන්න අවශ්‍ය දේවල්:\n\n📄 NIC එකේ Copy එකක්.\n🏠 Address එක Prove කරන්න Document එකක් හෝ Request Letter එකක්.\n💰 Advance Payment එකක් ගෙවන්න ඕනේ."
+  },
+  {
+    keywords: ["peo tv", "peotv", "peo tv packages", "peo tv wisthara", "peo tv channels", "peo tv channels list"],
+    answer: "📺 PeoTV Packages:\n\n🔹 PeoTV වලට වෙනම Connection එකක් දෙන්නේ නෑ. (Megaline හෝ Fibre Double Play/Triple Play එකක් එක්ක තමයි දෙන්නේ).\n🔹 PeoTV එකක් ගත්තම, ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ. (ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ).\n🔹 PeoTV එකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ. (ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ)."
+  },
+  {
+    keywords: ["terminate", "disconnect", "cancel", "ain karanna", "connection terminate", "disconnect karanna", "remove connection"],
+    answer: "❌ Connection එකක් Terminate (අයින්) කරනකොට:\n\n📝 Legal owner ගේ Requesting Letter එකක් ඕනේ.\n🔌 Customer අයින් කරන Router එක (සහ අදාළ උපකරණ) ආපහු දෙන්න ඕනේ.\n💰 Due payments (හිඟ මුදල්) ඔක්කොම ගෙවන්න ඕනේ.\n\n⚠️ (සැලකිය යුතුයි: Megaline, Fiber, 4G සඳහා සාමාන්‍යයෙන් 1 Year commitment period එකක් අදාළ වේ)."
+  },
+  {
+    keywords: ["consumer customers", "customer categories", "residential", "business", "religious", "customer types", "pawaribhogika kotas", "customers la"],
+    answer: "👥 Consumer Customers ප්‍රධාන කොටස් 3යි:\n\n🏠 Residential: ගෘහස්ථ පාරිභෝගිකයින් (ගෙවල් වලට).\n🏢 Business: ව්‍යාපාරික පාරිභෝගිකයින් (කඩ සහ ආයතන).\n🕌 Religious: ආගමික ස්ථාන (පන්සල්, පල්ලි, කෝවිල්)."
+  },
+  {
+    keywords: ["cpe", "equipment", "router", "ont", "adsl router", "peotv box", "setup box", "devices", "customer premises equipment", "4g router warranty", "voice phone", "stb"],
+    answer: "📦 Customer Premises Equipments (CPE) විස්තර:\n\n☎️ Megaline: පාවිච්චි කරන්නේ ADSL Router එක. (දැන් SLT එකෙන් ADSL Routers දෙන්නේ නෑ, Customer වෙනම ගන්න ඕනේ).\n🚀 Fiber: Router එකට කියන්නේ ONT කියලා. (ONT එක SLT එකෙන් දෙනවා, හැබැයි Voice Phone එක Customer ගන්න ඕනේ).\n📱 4G: පාවිච්චි කරන්නේ 4G LTE Router එක. (2024 අගෝස්තු 1 ට කලින් ගත්ත එකක් නම්, ඒකේ වගකීම SLT එක විසින් දරනු ඇත).\n📺 PeoTV: Set-top Box සහ Remote එක දෙනවා."
   }
 ];
 
