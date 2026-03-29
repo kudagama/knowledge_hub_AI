@@ -1,21 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
+import Fuse from 'fuse.js';
 
-const mockData = [
+const knowledgeBase = [
   {
-    keywords: ["what is the main mediums on slt mobitel to deliver services", "slt mediums english"],
-    answer: "Fiber to the Home/Premises (FTTx): This is the flagship technology, providing high-speed fiber connectivity to residential and enterprise customers, offering speeds up to 1 Gbps.\n\n4G/LTE (Fixed & Mobile): SLT-Mobitel utilizes fixed 4G/LTE for residential broadband and widespread mobile 4G-LTE technology for mobile telephony and broadband, including high-speed HSPA+ and MIMO technologies.\n\nCopper (ADSL2+ / VDSL2): The company continues to use its extensive existing copper telephone network to deliver broadband services, primarily through ADSL technology."
+    keywords: ["megaline wisthara", "copper packages", "megaline details", "megaline single play", "megaline double play", "megaline triple play"],
+    answer: "☎️ Megaline (Copper) Packages:\n\n🔹 Single Play: Voice only.\n🔹 Double Play: Two services only (Voice + BB හෝ Voice + PeoTV. BB හෝ PeoTV පමණක් වෙනම දෙන්නේ නෑ).\n🔹 Triple Play: Services 3ම දෙනවා (Voice + BB + PeoTV)."
   },
   {
-    keywords: ["slt connection jathi monawada", "slt mediums sinhala", "slt eken dena services monawada", "slt connections"],
-    answer: "Fiber to the Home/Premises (FTTx): මේක තමයි ප්රධානම technology එක. ගෙවල් වලට සහ ආයතන වලට 1 Gbps දක්වා speed එකක් තියෙන high-speed fiber connection මේකෙන් දෙනවා.\n\n4G/LTE (Fixed & Mobile): SLT-Mobitel ගෙවල් වලට fixed 4G/LTE broadband දෙනවා වගේම, mobile calls සහ broadband වලට mobile 4G-LTE technology එක පාවිච්චි කරනවා. මේකට high-speed HSPA+ සහ MIMO technologies ඇතුලත්.\n\nCopper (ADSL2+ / VDSL2): සමාගම දැනට තියෙන ලොකු තඹ දුරකථන ජාලය (copper telephone network) පාවිච්චි කරලා, ගොඩක් වෙලාවට ADSL technology එක හරහා broadband services දිගටම දෙනවා."
+    keywords: ["fibre wisthara", "fiber packages", "fibre details", "fibre single play", "fibre double play", "fibre triple play", "fttx packages"],
+    answer: "🚀 Fibre Packages:\n\n🔹 Single Play: Voice only.\n🔹 Double Play: Two services only (Voice + BB හෝ Voice + PeoTV. BB සහ PeoTV පමණක් වෙනම දෙන්නේ නෑ).\n🔹 Triple Play: Services 3ම දෙනවා (Voice + BB + PeoTV)."
   },
   {
-    keywords: ["react", "react js", "reactjs"],
-    answer: "React is a JavaScript library for building user interfaces. It is maintained by Meta and a community of developers. React can be used as a base in the development of single-page or mobile applications."
-  },
-  {
-    keywords: ["tailwind", "tailwindcss"],
-    answer: "Tailwind CSS is a utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup."
+    keywords: ["4g wisthara", "4g packages", "lte details", "4g single play", "4g double play", "4g triple play"],
+    answer: "📱 4G Packages:\n\n🔹 Single Play: Voice සහ Broadband දෙකම තියෙනවා. වෙන වෙනම ගන්නත් පුළුවන්.\n🔹 Double Play: '4G Double Play' කියලා වෙනම ජාතියක් නෑ. Voice & BB විතරයි තියෙන්නේ. PeoTV දෙන්නේ නෑ.\n🔹 Triple Play: 4G වලට Triple play එකක් නෑ. (PeoTV දෙන්නේ නැති නිසා)."
   }
 ];
 
@@ -50,16 +47,23 @@ function App() {
     setIsTyping(true);
     setHasSearched(true);
     
-    // Find matching entry based on keywords
-    const foundEntry = mockData.find(entry => 
-      entry.keywords.some(kw => kw.toLowerCase().includes(query) || query.includes(kw.toLowerCase()))
-    );
+    // Fuzzy matching with Fuse.js
+    const fuseOptions = {
+      includeScore: true,
+      threshold: 0.4, // Tolerance level as requested
+      keys: ['keywords']
+    };
     
-    const resultText = foundEntry ? foundEntry.answer : null;
+    const fuse = new Fuse(knowledgeBase, fuseOptions);
+    const searchResults = fuse.search(query);
+    
+    // Check if we have results beneath our threshold limitation (in Fuse lower is better/closer match)
+    const resultText = searchResults.length > 0 
+        ? searchResults[0].item.answer 
+        : "Sorry, I couldn't find a close match for that. Can you try different words?";
     
     if (resultText) {
       // Split by spaces, which preserves \n connected to words 
-      // e.g. "Gbps.\n\n4G/LTE" acts as one block preserving the newline
       const words = resultText.split(' ');
       let currentWordIndex = 0;
       
@@ -73,9 +77,6 @@ function App() {
           setIsTyping(false);
         }
       }, 50);
-    } else {
-      setIsTyping(false);
-      setDisplayedText("Sorry, no internal knowledge found for this topic.");
     }
   };
 
@@ -96,9 +97,9 @@ function App() {
             </svg>
           </div>
           <h1 className="text-4xl font-extrabold tracking-tight text-slt-blue mb-2 text-center">
-            Knowledge Hub AI
+            Telecom Smart Hub AI
           </h1>
-          <p className="text-slate-500 text-sm font-medium text-center">Ask anything from your internal knowledge base.</p>
+          <p className="text-slate-500 text-sm font-medium text-center">Highly responsive, AI-searchable repository for contact center agents.</p>
         </header>
 
         {/* Main Content Area */}
@@ -118,7 +119,7 @@ function App() {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search knowledge... (e.g. slt mediums, react)"
+                placeholder="Search knowledge... (e.g. fibre wisthara, 4g packages)"
                 className="flex-1 bg-transparent border-none text-slate-800 px-4 py-5 outline-none placeholder:text-slate-400 text-lg w-full"
                 autoComplete="off"
               />
@@ -162,7 +163,7 @@ function App() {
                     </svg>
                   </div>
                   <p className="text-lg font-medium text-slate-500">Your knowledge results will appear here</p>
-                  <p className="text-sm mt-2 opacity-80 text-center max-w-sm">Try searching for queries like "slt mediums" or "react".</p>
+                  <p className="text-sm mt-2 opacity-80 text-center max-w-sm">Try searching for queries like "megaline triple play" or "4g packages".</p>
                 </div>
               ) : (
                 <div className="max-w-none">
