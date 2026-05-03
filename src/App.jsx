@@ -56,13 +56,12 @@ function App() {
     };
   }, []);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    const query = searchTerm.trim().toLowerCase();
+    const query = searchTerm.trim();
     
     if (!query) return;
 
-    // Clear previous interval if any
     if (timerRef.current) {
       clearInterval(timerRef.current);
     }
@@ -71,36 +70,32 @@ function App() {
     setIsTyping(true);
     setHasSearched(true);
     
-    // Fuzzy matching with Fuse.js
-    const fuseOptions = {
-      includeScore: true,
-      threshold: 0.4, // Tolerance level as requested
-      keys: ['keywords']
-    };
-    
-    const fuse = new Fuse(knowledgeBase, fuseOptions);
-    const searchResults = fuse.search(query);
-    
-    // Check if we have results beneath our threshold limitation (in Fuse lower is better/closer match)
-    const resultText = searchResults.length > 0 
-        ? searchResults[0].item.answer 
-        : "Sorry, I couldn't find a close match for that. Can you try different words?";
-    
-    if (resultText) {
-      // Split by spaces, which preserves \n connected to words 
-      const words = resultText.split(' ');
-      let currentWordIndex = 0;
+    try {
+      // Python Backend එකෙන් Data ගන්නවා
+      const response = await fetch(`http://127.0.0.1:8000/search?q=${encodeURIComponent(query)}`);
+      const data = await response.json();
       
-      timerRef.current = setInterval(() => {
-        if (currentWordIndex < words.length) {
-          const word = words[currentWordIndex];
-          setDisplayedText(prev => prev ? prev + ' ' + word : word);
-          currentWordIndex++;
-        } else {
-          clearInterval(timerRef.current);
-          setIsTyping(false);
-        }
-      }, 50);
+      const resultText = data.answer;
+      
+      if (resultText) {
+        const words = resultText.split(' ');
+        let currentWordIndex = 0;
+        
+        timerRef.current = setInterval(() => {
+          if (currentWordIndex < words.length) {
+            const word = words[currentWordIndex];
+            setDisplayedText(prev => prev ? prev + ' ' + word : word);
+            currentWordIndex++;
+          } else {
+            clearInterval(timerRef.current);
+            setIsTyping(false);
+          }
+        }, 50);
+      }
+    } catch (error) {
+      console.error("Error fetching from backend:", error);
+      setDisplayedText("Backend එකට සම්බන්ධ වීමේ දෝෂයක්. කරුණාකර Backend සර්වර් එක Run වෙනවාදැයි බලන්න.");
+      setIsTyping(false);
     }
   };
 

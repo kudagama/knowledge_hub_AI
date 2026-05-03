@@ -1,0 +1,9 @@
+ප්රධාන SLT සේවාවන් මෙන්න: Fiber (FTTx): 1 Gbps දක්වා speed. 4G/LTE: Wireless broadband. Copper (ADSL): Telephone line එකෙන් දෙන basic internet සේවාව.
+Megaline (Copper) Packages: Single Play: Voice only. Double Play: Two services only (Voice + BB හෝ Voice + PeoTV). Triple Play: Services 3ම දෙනවා.
+Fibre Packages: Single Play: Voice only. Double Play: Two services only. Triple Play: Services 3ම දෙනවා.
+4G Packages: Single Play: Voice සහ Broadband. Double Play: Voice & BB විතරයි. Triple Play: 4G වලට Triple play එකක් නෑ.
+New Connection එකක් ගන්න අවශ්‍ය දේවල්: NIC එකේ Copy එකක්, Address එක Prove කරන්න Document එකක්, Advance Payment එකක්.
+PeoTV Packages: PeoTV වලට වෙනම Connection එකක් දෙන්නේ නෑ. PeoTV එකක් ගත්තම, ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ.
+Connection එකක් Terminate (අයින්) කරනකොට: Legal owner ගේ Requesting Letter එකක් ඕනේ, Router එක ආපහු දෙන්න ඕනේ, Due payments ගෙවන්න ඕනේ.
+Consumer Customers ප්‍රධාන කොටස් 3යි: Residential, Business, Religious
+Customer Premises Equipments (CPE): Megaline වලට ADSL Router. Fiber වලට ONT. 4G වලට 4G LTE Router. PeoTV වලට Set-top Box.
