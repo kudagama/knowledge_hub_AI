@@ -27,9 +27,9 @@ if os.path.exists(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         # හිස් පේළි අයින් කරලා ලැයිස්තුවකට ගන්නවා
         knowledge_base = [line.strip() for line in file if line.strip()]
-    print(f"දත්ත {len(knowledge_base)} ක් සාර්ථකව කියවන ලදී!")
+    print(f"Read {len(knowledge_base)} data records successfully!")
 else:
-    print("data.txt ෆයිල් එක හොයාගන්න නෑ! කරුණාකර එය සාදන්න.")
+    print("data.txt file not found! Please create it.")
     knowledge_base = ["දත්ත ගබඩාව හිස්."]
 
 # 2. දත්ත ටික AI Vectors බවට පත් කිරීම
