@@ -40,6 +40,9 @@ const knowledgeBase = [
   }
 ];
 
+// Set this to false if you want to use the Python Backend. Set to true for 100% Free Vercel Hosting without Backend.
+const USE_LOCAL_SEARCH = true;
+
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [displayedText, setDisplayedText] = useState('');
@@ -71,11 +74,27 @@ function App() {
     setHasSearched(true);
     
     try {
-      // Python Backend එකෙන් Data ගන්නවා
-      const response = await fetch(`http://127.0.0.1:8000/search?q=${encodeURIComponent(query)}`);
-      const data = await response.json();
-      
-      const resultText = data.answer;
+      let resultText = "";
+
+      if (USE_LOCAL_SEARCH) {
+        // Local Fuzzy Search (Backend eka nathuwa wada karanna)
+        const fuse = new Fuse(knowledgeBase, {
+          keys: ['keywords', 'answer'],
+          threshold: 0.4,
+        });
+        const results = fuse.search(query);
+        if (results.length > 0) {
+          resultText = results[0].item.answer;
+        } else {
+          resultText = "සමාවෙන්න, ඒ ගැන විස්තරයක් මට හොයාගන්න බැරි වුණා. වෙනත් වචන වලින් උත්සාහ කරන්න.";
+        }
+      } else {
+        // Python Backend එකෙන් Data ගන්නවා
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+        const response = await fetch(`${apiUrl}/search?q=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        resultText = data.answer;
+      }
       
       if (resultText) {
         const words = resultText.split(' ');
