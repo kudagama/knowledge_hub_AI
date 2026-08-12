@@ -19,10 +19,6 @@ const knowledgeBase = [
     answer: "📱 4G Packages:\n\n🔹 Single Play: Voice සහ Broadband දෙකම තියෙනවා. වෙන වෙනම ගන්නත් පුළුවන්.\n🔹 Double Play: '4G Double Play' කියලා වෙනම ජාතියක් නෑ. Voice & BB විතරයි තියෙන්නේ. PeoTV දෙන්නේ නෑ.\n🔹 Triple Play: 4G වලට Triple play එකක් නෑ. (PeoTV දෙන්නේ නැති නිසා)."
   },
   {
-    keywords: ["new connection", "aluth connection", "documents needed", "new line", "connection ganna", "requirements"],
-    answer: "🆕 New Connection එකක් ගන්න අවශ්‍ය දේවල්:\n\n📄 NIC එකේ Copy එකක්.\n🏠 Address එක Prove කරන්න Document එකක් හෝ Request Letter එකක්.\n💰 Advance Payment එකක් ගෙවන්න ඕනේ."
-  },
-  {
     keywords: ["peo tv", "peotv", "peo tv packages", "peo tv wisthara", "peo tv channels", "peo tv channels list"],
     answer: "📺 PeoTV Packages:\n\n🔹 PeoTV වලට වෙනම Connection එකක් දෙන්නේ නෑ. (Megaline හෝ Fibre Double Play/Triple Play එකක් එක්ක තමයි දෙන්නේ).\n🔹 PeoTV එකක් ගත්තම, ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ. (ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ).\n🔹 PeoTV එකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ. (ඒකේ තියෙන Channel List එක වෙනස් වෙන්නේ නෑ)."
   },
@@ -37,6 +33,38 @@ const knowledgeBase = [
   {
     keywords: ["cpe", "equipment", "router", "ont", "adsl router", "peotv box", "setup box", "devices", "customer premises equipment", "4g router warranty", "voice phone", "stb"],
     answer: "📦 Customer Premises Equipments (CPE) විස්තර:\n\n☎️ Megaline: පාවිච්චි කරන්නේ ADSL Router එක. (දැන් SLT එකෙන් ADSL Routers දෙන්නේ නෑ, Customer වෙනම ගන්න ඕනේ).\n🚀 Fiber: Router එකට කියන්නේ ONT කියලා. (ONT එක SLT එකෙන් දෙනවා, හැබැයි Voice Phone එක Customer ගන්න ඕනේ).\n📱 4G: පාවිච්චි කරන්නේ 4G LTE Router එක. (2024 අගෝස්තු 1 ට කලින් ගත්ත එකක් නම්, ඒකේ වගකීම SLT එක විසින් දරනු ඇත).\n📺 PeoTV: Set-top Box සහ Remote එක දෙනවා."
+  },
+  {
+    keywords: ["fttx trio bundled packages", "triple play packages", "fiber package prices", "fibre trio packages"],
+    answer: "📦 FTTx Trio Bundled Packages (Voice + Broadband + PeoTV):\n\n🔹 Web Family Plus: Rs. 3,990/-\n🔹 Web Surfer: Rs. 5,490/-\n🔹 Fibre 100: Rs. 7,990/-\n🔹 Fibre 200: Rs. 12,900/-\n\n(මෙම මිල ගණන් වලට බදු මුදල් (Taxes) එකතු විය යුතුය)."
+  },
+  {
+    keywords: ["fttx setup", "fiber wiring", "ont connection", "rosette box", "patch cord", "wiring", "cpe setup"],
+    answer: "🔌 Fiber (FTTx) CPE Setup එක:\n\nDrop wire එක මුලින්ම එන්නේ Rosette Box එකටයි. එතැනින් Patch Cord එකක් හරහා ONT (Router) එකට සම්බන්ධ වේ. ONT එකෙන් Voice Phone, PC (Data), සහ Set-Top Box (PeoTV) වලට connection බෙදී යයි."
+  },
+  {
+    keywords: ["double play charges", "double play connection fee", "voice broadband cost", "ftth double play", "2 play charges"],
+    answer: "🌐 Double Play (Voice + Broadband) Connection Charges:\n\n• Standard Connection Fee: Rs. 12,500/=\n• Promotional Offer / Discounted Fee: Rs. 9,900/=\n  (Valid for upfront payments till 31/03/2026)\n• 12-Month Installment Option: Rs. 1,250/= x 12 months"
+  },
+  {
+    keywords: ["triple play charges", "peotv connection fee", "voice broadband peotv", "ftth triple play", "3 play charges"],
+    answer: "📺 Triple Play (Voice + Broadband + PEOTV) Connection Charges:\n\n• Standard Connection Fee: Rs. 15,300/=\n• Promotional Offer / Discounted Fee: Rs. 11,250/=\n  (Valid for upfront payments till 31/03/2026)\n• 12-Month Installment Option: Rs. 1,425/= x 12 months"
+  },
+  {
+    keywords: ["online portal discount", "slt app connection charge", "online application discount", "new connection online promo"],
+    answer: "📱 Online Portal / App හරහා New Connection ලබාගැනීමේ විශේෂ ගාස්තු:\n\n• Double Play (Voice + BB): Rs. 8,250/=\n• Triple Play (Voice + BB + PEOTV): Rs. 9,900/="
+  },
+  {
+    keywords: ["voice only charges", "single play voice", "ftth telephone connection cost", "landline connection charge"],
+    answer: "📞 FTTH Voice Only Connection Charges:\n\n• Standard Connection Fee: Rs. 12,500/=\n• 12-Month Installment Option: Rs. 1,250/= x 12 months"
+  },
+  {
+    keywords: ["copper to fiber migration", "megaline to ftth migration", "upgrade copper to fiber", "migration charges"],
+    answer: "🔄 Copper / Megaline සිට FTTH වලට Migrate වීමේ ගාස්තු:\n\n• Double Play Upgrade (Upfront): Rs. 7,000/=\n  (Installments: Rs. 1,250/= x 6 months = Total Rs. 7,500/=)\n• Triple Play Upgrade (Upfront): Rs. 9,500/=\n  (Installments: Rs. 1,350/= x 8 months = Total Rs. 10,800/=)"
+  },
+  {
+    keywords: ["required documents", "documents for new connection", "nic copy", "address proof", "br copy for fiber", "business connection documents", "new connection"],
+    answer: "📋 New Connection එකක් සඳහා අවශ්ය ලියකියවිලි:\n\n👤 Individual / Personal Connection:\n• ජාතික හැඳුනුම්පතේ (NIC) / Passport / Driving License පිටපතක්.\n• ලිපිනය තහවුරු කරන ලියවිල්ලක් (Address Proof - Utility Bill, Bank Statement).\n\n🏢 Business / Sole Proprietorship / Partnership:\n• ජාතික හැඳුනුම්පතේ (NIC) පිටපතක්.\n• ලිපිනය තහවුරු කරන ලියවිල්ලක්.\n• ව්යාපාර ලියාපදිංචි සහතිකය (BR Copy)."
   }
 ];
 

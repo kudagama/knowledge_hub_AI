@@ -7,3 +7,7 @@ PeoTV Packages: PeoTV වලට වෙනම Connection එකක් දෙන�
 Connection එකක් Terminate (අයින්) කරනකොට: Legal owner ගේ Requesting Letter එකක් ඕනේ, Router එක ආපහු දෙන්න ඕනේ, Due payments ගෙවන්න ඕනේ.
 Consumer Customers ප්‍රධාන කොටස් 3යි: Residential, Business, Religious
 Customer Premises Equipments (CPE): Megaline වලට ADSL Router. Fiber වලට ONT. 4G වලට 4G LTE Router. PeoTV වලට Set-top Box.
+Fiber (FTTH) New Connection Charges: Standard FTTH Connection (Double Play හෝ Triple Play) සඳහා Installation Fee එක රු. 12,500 + Taxes වේ.
+FTTx Trio Bundled Packages: Web Family Plus (Rs. 3990), Web Surfer (Rs. 5490), Fibre 100 (Rs. 7990), Fibre 200 (Rs. 12900). මේවාට බදු එකතු වේ.
+Business (SME/SOHO) Connection අවශ්‍ය ලියකියවිලි: NIC පිටපතක්, ලිපිනය තහවුරු කරන ලියවිල්ලක්, ව්‍යාපාර ලියාපදිංචි සහතිකය (BR Copy).
+Fiber (FTTx) CPE Setup: Drop wire එක එන්නේ Rosette Box එකටයි. එතැනින් Patch Cord එක හරහා ONT එකට සම්බන්ධ වේ.
